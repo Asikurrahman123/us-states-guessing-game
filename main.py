@@ -16,11 +16,15 @@ while len(guessing_state) < 50:
                                     prompt="What's the another state name").title()
 
 
+# Using list comprehension
+
+
     if answer_state == "Exit":
-        missing_state = []
-        for state in state_list:
-            if state not in guessing_state:
-                missing_state.append(state)
+        # missing_state = []
+        # for state in state_list:
+        #     if state not in guessing_state:
+        #         missing_state.append(state)
+        missing_state = [state for state in state_list if state not in guessing_state]
         missing_states = pandas.DataFrame(missing_state)
         missing_states.to_csv("missing_state.csv")
         break
